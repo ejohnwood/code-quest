@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A playful coding and AI literacy tutorial for new computer explorers.">
+  <title>Code Quest</title>
+  <link rel="stylesheet" href="styles.css?v=19">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to the lesson</a>
+  <header class="topbar">
+    <button class="brand" data-go="home" aria-label="Go to mission map">
+      <span class="brand-mark" aria-hidden="true">&lt;/&gt;</span>
+      <span>Code Quest</span>
+    </button>
+    <div class="progress-wrap" aria-label="Course progress">
+      <span id="progress-label">0 of 15 missions</span>
+      <div class="progress-track"><div id="progress-bar"></div></div>
+      <span id="path-label">Thinking in steps → Real code</span>
+    </div>
+    <div class="nav-actions">
+      <button id="guide-button" class="guide-button" aria-label="Grown-up guide">Guide</button>
+      <button id="code-lab-button" class="code-lab-button" disabled title="Complete Explorer Training to unlock Code Lab">
+        <span aria-hidden="true">&lt;/&gt;</span><span id="code-lab-label">Code Lab locked</span>
+      </button>
+      <button id="toolkit-button" class="toolkit-button" aria-label="My Badges">
+        <span class="badge-button-icon" aria-hidden="true">🏅</span>
+        <span>My Badges</span>
+      </button>
+      <button id="sound-toggle" class="sound-button" aria-pressed="false" title="Turn sound effects on">
+        <span id="sound-icon" aria-hidden="true">🔇</span>
+        <span id="sound-label">Sound off</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="home-view" class="view">
+      <div class="hero">
+        <div>
+          <p class="eyebrow">Explorer training starts here</p>
+          <h1>Think clearly.<br><span>Build boldly.</span></h1>
+          <p class="hero-copy">Learn how coders solve problems—and how to be the boss of AI, not the other way around.</p>
+          <button class="primary big" data-start>Start mission 1 <span aria-hidden="true">→</span></button>
+          <div class="quest-facts" aria-label="Course facts">
+            <span><b>15</b> short missions</span><span><b>5–10 min</b> each</span><span><b>No account</b> needed</span>
+          </div>
+          <div id="journey-resume" class="journey-resume hidden" aria-live="polite"></div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="bot">
+            <div class="antenna"></div>
+            <div class="bot-face"><i></i><i></i><b></b></div>
+            <div class="bot-body">&lt;?&gt;</div>
+          </div>
+          <span class="spark s1">✦</span><span class="spark s2">+</span><span class="spark s3">01</span>
+        </div>
+      </div>
+
+      <section class="how-to-play" aria-labelledby="how-to-heading">
+        <div class="how-to-heading">
+          <p class="eyebrow">How to play</p>
+          <h2 id="how-to-heading">Try it. Check it. Grow.</h2>
+          <p>You never lose a mission. Every try gives you a clue.</p>
+        </div>
+        <ol class="play-steps">
+          <li><span aria-hidden="true">1</span><div><strong>Read the mission</strong><small>Look for what Byte needs you to do.</small></div></li>
+          <li><span aria-hidden="true">2</span><div><strong>Build your answer</strong><small>Move, choose, or create—then test it.</small></div></li>
+          <li><span aria-hidden="true">3</span><div><strong>Use the clues</strong><small>A hint is always there when you need one.</small></div></li>
+        </ol>
+      </section>
+
+      <section class="mission-section" aria-labelledby="mission-heading">
+        <div class="section-heading">
+          <div><p class="eyebrow">Your path</p><h2 id="mission-heading">The adventure map</h2></div>
+          <div class="map-view-controls"><p>One focused quest at a time, with the full course always available.</p><button id="course-view-toggle" class="secondary" aria-expanded="false">Show full course map</button></div>
+        </div>
+        <div id="course-map"></div>
+      </section>
+
+      <section class="promise">
+        <div class="promise-icon" aria-hidden="true">★</div>
+        <div><p class="eyebrow">The explorer promise</p><h2>Mistakes are information.</h2></div>
+        <p>Real coders do not get everything right the first time. They try, notice, change, and try again. That is how brains—and programs—get stronger.</p>
+      </section>
+    </section>
+
+    <section id="lesson-view" class="view hidden" aria-live="polite">
+      <div class="lesson-shell">
+        <aside class="lesson-sidebar">
+          <button class="back-button" data-go="home">← Mission map</button>
+          <p class="eyebrow" id="lesson-kicker"></p>
+          <h2 id="lesson-title"></h2>
+          <p id="lesson-goal"></p>
+          <div class="mini-map" id="mini-map"></div>
+        </aside>
+        <article class="lesson-card">
+          <div id="lesson-content"></div>
+          <div class="lesson-actions">
+            <button id="read-aloud" class="secondary" aria-pressed="false"><span aria-hidden="true">▶</span> Read aloud</button>
+            <button id="hint-button" class="secondary">Need a hint?</button>
+            <button id="check-button" class="primary">Check my thinking</button>
+          </div>
+          <div id="feedback" class="feedback hidden" tabindex="-1"></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="lab-view" class="view hidden" aria-labelledby="lab-title">
+      <div class="lab-shell">
+        <aside class="lab-sidebar">
+          <button class="back-button" data-go="home">← Mission map</button>
+          <p class="eyebrow">Your coding playground</p>
+          <h2 id="lab-title" tabindex="-1">Code Lab</h2>
+          <p>Write commands for Byte, run them, and use the clues to debug your program.</p>
+          <button id="command-toggle" class="command-toggle" aria-expanded="false" aria-controls="command-reference">Show commands <span aria-hidden="true">+</span></button>
+          <div id="command-reference" class="command-reference hidden" aria-label="Command reference">
+            <div class="command-reference-heading"><h3>All commands</h3><small>Select one for details</small></div>
+            <button data-lab-command="MOVE"><code>MOVE 1</code><small>Move 1–10 spaces</small></button>
+            <button data-lab-command="TURN"><code>TURN LEFT</code><small>Turn left or right</small></button>
+            <button data-lab-command="SAY"><code>SAY Hello!</code><small>Make Byte speak</small></button>
+            <button data-lab-command="PAINT"><code>PAINT MINT</code><small>Paint the current square</small></button>
+            <button data-lab-command="REPEAT" data-lab-feature="repeat" class="hidden"><code>REPEAT 4 TIMES</code><small>Repeat a command group</small></button>
+            <button data-lab-command="FACE" data-lab-feature="face" class="hidden"><code>FACE NORTH</code><small>Face a compass direction</small></button>
+            <button data-lab-command="FUNCTION" data-lab-feature="function" class="hidden"><code>FUNCTION ...</code><small>Create a reusable command</small></button>
+            <div class="lab-color-palette" aria-label="Eight paint colors">
+              <span>Paint palette</span>
+              <button data-paint-color="PURPLE" title="Insert PAINT PURPLE"><i class="purple"></i>Purple</button>
+              <button data-paint-color="MINT" title="Insert PAINT MINT"><i class="mint"></i>Mint</button>
+              <button data-paint-color="YELLOW" title="Insert PAINT YELLOW"><i class="yellow"></i>Yellow</button>
+              <button data-paint-color="CORAL" title="Insert PAINT CORAL"><i class="coral"></i>Coral</button>
+              <button data-paint-color="BLUE" title="Insert PAINT BLUE"><i class="blue"></i>Blue</button>
+              <button data-paint-color="GREEN" title="Insert PAINT GREEN"><i class="green"></i>Green</button>
+              <button data-paint-color="ORANGE" title="Insert PAINT ORANGE"><i class="orange"></i>Orange</button>
+              <button data-paint-color="PINK" title="Insert PAINT PINK"><i class="pink"></i>Pink</button>
+            </div>
+            <div id="command-detail" class="command-detail" aria-live="polite">Choose a command to see how it works and view an example.</div>
+            <div id="lab-skill-status" class="lab-skill-status" aria-live="polite"></div>
+          </div>
+        </aside>
+        <article class="lab-card">
+          <div class="lab-heading">
+            <div><p class="eyebrow">Experiment freely</p><h3>Program Byte</h3></div>
+            <span class="autosave-note">Saved on this device</span>
+          </div>
+          <div class="lab-examples" aria-label="Starter programs">
+            <span>Try an example:</span>
+            <button data-lab-example="hello">Hello Byte</button>
+            <button data-lab-example="path">Square path</button>
+            <button data-lab-example="paint">Color trail</button>
+            <button data-lab-example="repeat" data-lab-feature="repeat" class="hidden">Repeat trail</button>
+            <button data-lab-example="compass" data-lab-feature="face" class="hidden">Compass route</button>
+            <button data-lab-example="function" data-lab-feature="function" class="hidden">My function</button>
+          </div>
+          <label class="lab-editor-label" for="lab-editor">Your program</label>
+          <div class="lab-editor-wrap">
+            <div class="lab-gutter" id="lab-gutter" aria-hidden="true"></div>
+            <textarea id="lab-editor" rows="11" maxlength="800" spellcheck="false" aria-describedby="lab-editor-help"></textarea>
+          </div>
+          <p id="lab-editor-help" class="lab-help">One command per line. Programs can have up to 20 lines.</p>
+          <div class="lab-actions">
+            <button id="run-lab" class="primary">▶ Run my code</button>
+            <button id="reset-lab" class="secondary">Start over</button>
+          </div>
+          <div class="lab-stage" aria-live="polite">
+            <section>
+              <div class="lab-stage-heading"><h4>Byte’s world</h4><span id="lab-direction">Facing right</span></div>
+              <div id="lab-grid" class="lab-grid" aria-label="A ten by ten coding grid"></div>
+              <div id="lab-speech" class="lab-speech hidden"></div>
+            </section>
+            <section class="lab-console">
+              <h4>Run report</h4>
+              <div id="lab-output"><p>Press “Run my code” to see what Byte does.</p></div>
+            </section>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer><span>Code Quest · 15 playful coding missions</span><button id="reset-progress">Reset progress</button></footer>
+  <div id="celebration" class="celebration hidden" aria-live="polite">
+    <div class="confetti" aria-hidden="true"></div>
+    <div class="celebration-card">
+      <span id="celebration-icon"></span>
+      <p class="eyebrow" id="celebration-kicker">New skill unlocked</p>
+      <h2 id="celebration-title"></h2>
+      <p id="celebration-copy"></p>
+      <div id="celebration-reflection"></div>
+      <div class="celebration-actions">
+        <button id="celebration-badges" class="secondary">See my badges</button>
+        <button id="certificate-button" class="secondary hidden">Make my certificate</button>
+        <button id="close-celebration" class="primary">Continue adventure</button>
+      </div>
+    </div>
+  </div>
+  <div id="toolkit" class="toolkit-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="toolkit-title">
+    <section class="toolkit-panel">
+      <button id="close-toolkit" class="toolkit-close" aria-label="Close My Badges">×</button>
+      <p class="eyebrow">Your growing collection</p>
+      <h2 id="toolkit-title">My Badges</h2>
+      <p class="toolkit-intro">Each badge celebrates coding skills you can use again.</p>
+      <div class="toolkit-progress"><div id="toolkit-progress-bar"></div></div>
+      <p id="toolkit-progress-label"></p>
+      <div id="toolkit-badges" class="toolkit-badges"></div>
+    </section>
+  </div>
+  <div id="reset-dialog" class="toolkit-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="reset-title" aria-describedby="reset-copy">
+    <section class="reset-panel">
+      <div class="reset-byte" aria-hidden="true">&lt;?&gt;</div>
+      <p class="eyebrow">Start a brand-new quest?</p>
+      <h2 id="reset-title">Reset all progress?</h2>
+      <p id="reset-copy">This erases completed missions, badges, reflections, and saved creations on this device. This cannot be undone.</p>
+      <div class="reset-actions">
+        <button id="cancel-reset" class="primary">Keep my progress</button>
+        <button id="confirm-reset" class="danger-button">Yes, erase everything</button>
+      </div>
+    </section>
+  </div>
+  <div id="guide" class="toolkit-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="guide-title">
+    <section class="guide-panel">
+      <button id="close-guide" class="toolkit-close" aria-label="Close grown-up guide">×</button>
+      <p class="eyebrow">For parents and teachers</p>
+      <h2 id="guide-title">Help your explorer thrive</h2>
+      <p class="guide-intro">Code Quest is designed for new computer learners at about a fifth-grade reading level. No account or internet connection is needed.</p>
+      <div class="guide-grid">
+        <section><span aria-hidden="true">⏱</span><h3>Time</h3><p>About 5–10 minutes per mission. Short breaks between levels work well.</p></section>
+        <section><span aria-hidden="true">🧠</span><h3>Skills</h3><p>Sequencing, debugging, AI checking, patterns, loops, functions, parameters, and explaining ideas.</p></section>
+        <section><span aria-hidden="true">🔒</span><h3>Privacy</h3><p>Progress stays in this browser on this device. No learner information is collected or sent.</p></section>
+        <section><span aria-hidden="true">💬</span><h3>How to help</h3><p>Ask “What did you notice?” before giving an answer. Hints are part of learning—not a penalty.</p></section>
+      </div>
+      <div class="grownup-prompt"><strong>Try asking:</strong> “What did you expect?” “What happened?” “What is one thing you could change?”</div>
+    </section>
+  </div>
+  <div id="certificate-dialog" class="toolkit-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="certificate-title">
+    <section class="certificate-shell">
+      <button id="close-certificate" class="toolkit-close no-print" aria-label="Close certificate">×</button>
+      <div class="certificate-bot" aria-hidden="true">&lt;/&gt;</div>
+      <p class="eyebrow">Certificate of completion</p>
+      <h2 id="certificate-title">Code Quest Champion</h2>
+      <p>This certifies that</p>
+      <label class="certificate-name"><span class="no-print">Explorer’s name</span><input id="certificate-name" maxlength="40" placeholder="Type a name" aria-label="Explorer's name"></label>
+      <p>completed all 15 Code Quest missions and demonstrated courageous problem-solving, careful debugging, responsible AI checking, loop-building, and reusable-function skills.</p>
+      <div class="certificate-skills"><span>Plan</span><span>Test</span><span>Debug</span><span>Loops</span><span>Functions</span><span>Create</span></div>
+      <p class="certificate-date" id="certificate-date"></p>
+      <button id="print-certificate" class="primary no-print">Print certificate</button>
+    </section>
+  </div>
+  <script src="app.js?v=19"></script>
+</body>
+</html>
