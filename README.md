@@ -1,81 +1,58 @@
 # Code Quest
 
-A playful, browser-based course that teaches coding habits and AI literacy to new computer learners at about a fifth-grade reading level.
+A playful introduction to coding, debugging, functions, and responsible AI use for young learners.
 
-Code Quest contains 15 short missions, a visual coding playground, progressive command unlocks, badges, and a printable completion certificate. It requires no account and stores learner progress only in that browser on that device.
+**[Play Code Quest](https://ejohnwood.github.io/code-quest/)**
 
-## Run it
+Code Quest guides learners through 15 short missions with Byte, a friendly robot companion. Each activity encourages kids to predict what will happen, test their thinking, learn from mistakes, and try again.
 
-Open `index.html` in a modern browser. No account, build step, or internet connection is required.
+## Highlights
 
-For the most reliable local experience, serve the folder with any simple local web server and open the address it provides.
+- 15 missions designed for approximately 5–10 minutes each
+- Kid-friendly instructions written around a fifth-grade reading level
+- A visual Code Lab with a 10-by-10 robot world
+- Commands that unlock gradually, including movement, loops, compass directions, and functions
+- Helpful hints, immediate feedback, optional read-aloud, badges, and a completion certificate
+- No account, installation, build process, or external services required
+- Progress saved only in the learner's browser
 
-## Publish with GitHub Pages
+## Learning journey
 
-This repository is ready to publish directly—there is no build step.
+| Stage | Focus |
+| --- | --- |
+| Starter Quest | Exact instructions, debugging, and checking AI-generated answers |
+| Level 1: Clear Instructions | Sequencing, prediction, and algorithm design |
+| Level 2: Debugging Detective | Evidence, careful testing, and explaining repairs |
+| Level 3: Pattern Power | Repeating patterns, loops, and safe stopping conditions |
+| Level 4: Command Creator | Compass navigation, reusable functions, and parameters |
 
-1. Push the files to the `main` branch of a GitHub repository.
-2. Open the repository's **Settings → Pages**.
-3. Under **Build and deployment**, choose **Deploy from a branch**.
-4. Select the `main` branch and the `/ (root)` folder, then save.
-5. Open the address GitHub provides after the deployment finishes.
+Code Lab unlocks after Starter Quest. Its available tools grow alongside the course: `MOVE`, `TURN`, `SAY`, and `PAINT` come first, followed by `REPEAT`, `FACE`, and reusable `FUNCTION` definitions.
 
-For a project repository named `code-quest`, the default address is:
+## Run locally
 
-```text
-https://YOUR-USERNAME.github.io/code-quest/
+Clone the repository and open `index.html` in a modern browser:
+
+```sh
+git clone https://github.com/ejohnwood/code-quest.git
+cd code-quest
 ```
 
-Enable **Enforce HTTPS** in the Pages settings when the option becomes available. If you later switch to a custom domain, previously saved learner progress will not move automatically because browsers keep local progress separate for each web address.
+You can also serve the folder with any simple local web server. There are no dependencies to install and no build command to run.
 
-## Course content
+## Privacy and safety
 
-### Starter Quest
+Code Quest does not collect or transmit learner information. Mission progress, creative work, and Code Lab drafts stay in browser storage on the current device. Optional read-aloud uses the device's built-in speech voice.
 
-1. Robot Instructions — sequencing, testing, and watching Byte act out the result
-2. Debugging Detective — testing and debugging
-3. AI Said What? — running, inspecting, repairing, and retesting an AI-generated program
+Programs in Code Lab are intentionally limited: source programs can contain up to 20 lines, and expanded programs stop after 120 actions. Errors identify the relevant line and provide learner-friendly guidance.
 
-### Level 1: Clear Instructions
+## For parents and teachers
 
-1. Lost Robot — commands, prediction, testing, and evidence
-2. The Missing Step — reading and finding gaps
-3. Robot Task Designer — creating, reading back, and self-reviewing an original algorithm
+The built-in Grown-up Guide explains timing, learning goals, privacy, and useful coaching prompts. Hints are part of the learning process, completed missions remain available for replay, and mistakes never cause a learner to lose progress.
 
-### Level 2: Debugging Detective
+## Technology
 
-1. Bug Museum — comparing evidence, classifying bugs, and reviewing why each diagnosis fits
-2. Change One Thing — predicting an outcome, testing one repair, and updating from evidence
-3. Sneaky Bug Lab — releasing and repairing a generated bug, then filing a structured detective report
+Code Quest is built with plain HTML, CSS, and JavaScript. The site is hosted with GitHub Pages and works without a backend or database.
 
-### Level 3: Pattern Power
+## Publishing updates
 
-1. Pattern Party — finding repeating units and translating each one into a loop
-2. Loop Lab — predicting, expanding, and testing loops before correcting an AI-generated repeat count
-3. Runaway Robot — explaining a forever-loop failure, repairing it safely, and creating a finite loop animation
-
-### Level 4: Command Creator
-
-1. Compass Commander — connecting loops to reusable functions through reliable compass commands
-2. Build a Navigation Function — assembling and reading `GO_NORTH(steps)`, then testing multiple parameter values
-3. Function Delivery — tracing three named function calls, collecting energy, and explaining why reuse makes code clearer
-
-Progress is stored only in the browser using local storage. No learner information is collected or transmitted.
-
-## Learner support
-
-- Optional read-aloud uses the device's built-in speech voice and sends no text online.
-- Hints progress from a clue to a stronger clue and then a complete solution.
-- Completed missions remain available for replay without changing saved progress.
-- The map highlights one recommended next mission, even when learners complete activities out of order.
-- The home screen focuses on the current level by default, with an optional full-course map and a welcome-back summary.
-- Saved creative activities can be reviewed or explicitly restarted while completed badges remain safe.
-- Level transitions, badges, and Byte's reactions celebrate effort and growth.
-
-## Code Lab
-
-Code Lab unlocks after the three Starter Quest missions. It gives learners a safe, visual place to write and run Byte commands on a 10-by-10 world. The available tools grow with the course: `MOVE`, `TURN`, `SAY`, and `PAINT` unlock first; `REPEAT` unlocks after Loop Lab; `FACE` unlocks after Compass Commander; and reusable `FUNCTION` definitions unlock after Build a Navigation Function. The explorer and examples update as new tools unlock. Programs are limited to 20 lines, expanded programs stop safely at 120 actions, errors point to a specific line, and the current draft is stored only on the learner's device.
-
-## For grown-ups
-
-The in-game Grown-up Guide summarizes timing, skills, privacy, and helpful coaching prompts. Learners who complete all 15 missions can personalize and print a Code Quest Champion certificate.
+Changes pushed to the `main` branch are published from the repository root through GitHub Pages. Because learner progress belongs to the site's web address, moving to a different domain will not automatically transfer existing browser progress.
